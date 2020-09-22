@@ -16,7 +16,10 @@ __1.Happiness 2.Sadness 3.Fear 4.Anger 5.Suprise 6.Disgust.__<br />
 ![](https://cloud-kmaqeh4qc.vercel.app/disgust1.gif)
 
 ## How facial expression recognition works?
-Facial expression recognition work in 2 parts:
+ A convolutional neural network for classifying human emotions from dynamic facial expressions in real time. We use transfer learning on the fully connected layers of an existing convolutional neural network which was pretrained for human emotion classification. A variety of datasets, as well as our own unique
+image dataset, will be use to train the model. Finally, a live video stream connected to a
+face detector feeds images to the neural network. The network subsequently classifies an arbitrary number of faces
+per image simultaneously in real time and display the probability of emotion in range of 0 to 1. Facial expression recognition work in 2 parts:
 1. Facial Detection:- The ability to detect the location of face in any input image or frame. The output is bounding box of the deteced faces.<br />
 2. Emotion Detection:- Classifying the emotion on the face as happy, angry, sad, surprise, disgust or fear.<br />
 
@@ -29,3 +32,6 @@ Vist [teachablemachine.withgoogle.com](https://teachablemachine.withgoogle.com) 
 
 Click "Add a class" upto 6 classes. Rename "Class 1" to "Happiness" ,"Class 2" to "Sadness", "Class 3" to "Fear", "Class 4" to "Anger", "Class 5" to "Suprise" and "Class 6" to "Disgust"<br/>
 ![](https://cloud-kmaqeh4qc.vercel.app/addclass.gif)
+Now is the most interesting step, we have to add image samples to each class with respective emotions. Like _smiling, happy_ images in __Happiness Class__. We have two option __Webcam__ and __Upload__ to add images. For video guide click [hear](https://youtu.be/DFBbSTvtpy4).<br />
+Click on __Train Model__ and let other values as default.Your Machine Learnig model is ready! Preview it by enabling webcam or input a image.Now its time to __Export Model__. We can export model in 3 differnt ways. But for now we will use default _Tensorflow.js_. Select __Upload my model__ to add our own model to cloud for further use.Click on _Copy_ option from code snippet. Open new HTML template on [repl.it](https://repl.it/languages/html) and paste the code between _body_ syntax.Click on __Run__ button to see your __Realtime Facial Expression Recognition__ working.Select __Start__ Button to get started. Give access to your webcam. It wil take couple of seconds to start webcam and connect to model.
+![](https://cloud-kmaqeh4qc.vercel.app/export.gif)<br />
