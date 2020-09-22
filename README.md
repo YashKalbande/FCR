@@ -6,7 +6,7 @@ Just go to [teachablemachine.withgoogle.com](https://teachablemachine.withgoogle
 
 # Getting start with Facial Expression Recognition
 Facial expressions convey the emotional state of an individual to observer what is at the back of mind. What we do while we speak often says more than the actual words. There are six basic types of emotions
-__1.Happiness 2.Sadness 3.Fear 4.Anger 5.Suprise 6.Disgust.__
+__1.Happiness 2.Sadness 3.Fear 4.Anger 5.Suprise 6.Disgust.__<br />
 ![](https://cloud-kmaqeh4qc.vercel.app/happy1.gif)
 ![](https://cloud-kmaqeh4qc.vercel.app/sad1.gif) 
 ![](https://cloud-kmaqeh4qc.vercel.app/fear1.gif) <br />
