@@ -24,6 +24,8 @@ Learn more about facial expression recognition in [Courcera course](https://www.
 [Link to DEMO](https://facialexpressionrecognition.yashkalbande.repl.co/) what we are going to build.
 
 ## Lets Build the Model 
-Vist [teachablemachine.withgoogle.com](https://teachablemachine.withgoogle.com) and clicking on "Get Started". You will see three option to create an image, audio, or pose project. For now, pick “Image Project”.
+Vist [teachablemachine.withgoogle.com](https://teachablemachine.withgoogle.com) and clicking on "Get Started". You will see three option to create an image, audio, or pose project. For now, pick “Image Project”.<br />
+![](https://cloud-kmaqeh4qc.vercel.app/create.gif)
 
-Click "Add a class" upto 6 classes. Rename "Class 1" to "Happiness" ,"Class 2" to "Sadness", "Class 3" to "Fear", "Class 4" to "Anger", "Class 5" to "Suprise" and "Class 6" to "Disgust"
+Click "Add a class" upto 6 classes. Rename "Class 1" to "Happiness" ,"Class 2" to "Sadness", "Class 3" to "Fear", "Class 4" to "Anger", "Class 5" to "Suprise" and "Class 6" to "Disgust"<br/>
+![](https://cloud-kmaqeh4qc.vercel.app/addclass.gif)
