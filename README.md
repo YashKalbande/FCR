@@ -7,9 +7,13 @@ Just go to [teachablemachine.withgoogle.com](https://teachablemachine.withgoogle
 # Getting start with Facial Expression Recognition
 Facial expressions convey the emotional state of an individual to observer what is at the back of mind. What we do while we speak often says more than the actual words. There are six basic types of emotions
 __1.Happiness 2.Sadness 3.Fear 4.Anger 5.Suprise 6.Disgust.__
-![](https://hackclub.slack.com/files/U011N4CAQSX/F01B54AQ874/happy1.gif) ![](https://hackclub.slack.com/files/U011N4CAQSX/F01B5AM1LEP/sad1.gif) ![](https://hackclub.slack.com/files/U011N4CAQSX/F01B5AQ5N75/fear1.gif?origin_team=T0266FRGM&origin_channel=D011N4CAU4T) <br />
+![](https://hackclub.slack.com/files/U011N4CAQSX/F01B54AQ874/happy1.gif)
+![](https://hackclub.slack.com/files/U011N4CAQSX/F01B5AM1LEP/sad1.gif) 
+![](https://hackclub.slack.com/files/U011N4CAQSX/F01B5AQ5N75/fear1.gif) <br />
 
-![](https://hackclub.slack.com/files/U011N4CAQSX/F01B21ZG1GD/angry1.gif?origin_team=T0266FRGM&origin_channel=D011N4CAU4T) ![](https://hackclub.slack.com/files/U011N4CAQSX/F01B21YRPCM/suprise1.gif?origin_team=T0266FRGM&origin_channel=D011N4CAU4T) ![](https://hackclub.slack.com/files/U011N4CAQSX/F01AQC70G5D/disgust1.gif?origin_team=T0266FRGM&origin_channel=D011N4CAU4T)
+![](https://hackclub.slack.com/files/U011N4CAQSX/F01B21ZG1GD/angry1.gif)
+![](https://hackclub.slack.com/files/U011N4CAQSX/F01B21YRPCM/suprise1.gif) 
+![](https://hackclub.slack.com/files/U011N4CAQSX/F01AQC70G5D/disgust1.gif)
 
 ## How facial expression recognition works?
 Facial expression recognition work in 2 parts:
