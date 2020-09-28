@@ -8,8 +8,21 @@ Put the following code in main.py file:
 from random import choice
 from turtle import *
 from freegames import floor, vector
+
+
+state = {'score': 0}
+path = Turtle(visible=False)
+writer = Turtle(visible=False)
+aim = vector(5, 0)
+pacman = vector(-40, -80)
+ghosts = [
+    [vector(-180, 160), vector(5, 0)],
+    [vector(-180, -160), vector(0, 5)],
+    [vector(100, 160), vector(0, -5)],
+    [vector(100, -160), vector(-5, 0)],
+]
 ```
-The above code says, import choice function form random module. Import every functions form turtle module and floor, vector form freegames.
+The above code says, import choice function form random module. Import every functions form turtle module. [floor](http://www.grantjenks.com/docs/freegames/api.html#freegames.floor), [vector](http://www.grantjenks.com/docs/freegames/api.html#freegames.vector) form freegames module. _State_ variable will display Score of game. _path_ and _writer_ variable help us to build maze using turtle library. _aim_ and _pacman_ variable will set a starting position and direction for Pac-Man. _ghosts_ variable will set direction and position for 4 ghosts.
 
 ## Draw the Maze
 Lets desgine the maze layout with an array called _tiles_ that contains our maze. 
@@ -39,11 +52,9 @@ tiles = [
     
 ]
 ```
-Now create a function called _world_. 
-Remember to be very careful about the indentation of each line - for example, make sure the path.update() is lined up exactly under the for.
 
-This function sets the background of the screen to black, then uses the path turtle to draw a 20 pixel blue square for every tile with a value greater than zero. 
-If a tile value equals 1, then we draw a white dot in the middle of the square.
+
+
 ## square
 ```python3
 def square(x, y):
@@ -58,8 +69,10 @@ def square(x, y):
         path.left(90)
 
     path.end_fill()
-    ```
+```
+    
 ## offset
+
 ```python3
 def offset(point):
     "Return offset of point in tiles."
@@ -85,6 +98,9 @@ def valid(point):
 
     return point.x % 20 == 0 or point.y % 20 == 0
 ```
+
+Now create a function called _world_. 
+Remember to be very careful about the indentation of each line - for example, make sure the path.update() is lined up exactly under the for.
 ```python3
 def world():
     Screen().bgcolor('black')
@@ -105,15 +121,22 @@ def world():
     
     update()
 ```
+This function sets the background of the screen to black, then uses the path turtle to draw a 20 pixel blue square for every tile with a value greater than zero. 
+If a tile value equals 1, then we draw a white dot in the middle of the square.
 
+## Move method
+Then create a new function called move().
 ```python3
 def move():
     "Move pacman and all ghosts."
     writer.undo()
     writer.write(state['score'])
-
     clear()
+```
 
+We need to move Pac-Man on every screen update. Change the move() and add following code:
+    
+```python3
     if valid(pacman + aim):
         pacman.move(aim)
 
@@ -155,6 +178,9 @@ def move():
             return
 
 ```
+
+##
+We need to create a new function to change the position of Pac-Man when we press a keys like up, down, left, right.
 ```python3
 def change(x, y):
     "Change pacman aim if valid."
@@ -162,6 +188,9 @@ def change(x, y):
         aim.x = x
         aim.y = y
 ```
+
+## abc
+This will cause the program to listen for arrow keypresses, and update Pac-Man’s direction.
 ```python3
 setup(420, 420, 370, 0)
 hideturtle()
@@ -178,8 +207,4 @@ world()
 move()
 done()
 ```
-```python3
-```
-## Draw Pac-Man
-We need to set a starting position and direction for Pac-Man.
 
