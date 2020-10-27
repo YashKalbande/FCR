@@ -2,14 +2,18 @@ In this workshop, we will be creating a Pac-Man maze game, where the user moves 
 We will use Freegame library. 
 
 ## Setup
-Go to [repl.it](https://www.repl.it/languages/python3) to use "repl.it" to quick start our workshop.<br />
-Put the following code in main.py file:
+Start a new Python file. Using your favourite text editor or go on [repl.it/languages/python3](https://www.repl.it/languages/python3) to start new coding environment of Python 3 to quick start our workshop.
+
+Start your new `main.py` with a new modular imports:
 ```python3
 from random import choice
 from turtle import *
 from freegames import floor, vector
+```
+The above code says, import choice function form random module. Import every functions form turtle module. [floor](http://www.grantjenks.com/docs/freegames/api.html#freegames.floor), [vector](http://www.grantjenks.com/docs/freegames/api.html#freegames.vector) form freegames module.
 
-
+Next, we’ll want to declare and initialise all of our global variables:
+```
 state = {'score': 0}
 path = Turtle(visible=False)
 writer = Turtle(visible=False)
@@ -22,14 +26,13 @@ ghosts = [
     [vector(100, -160), vector(-5, 0)],
 ]
 ```
-The above code says, import choice function form random module. Import every functions form turtle module. [floor](http://www.grantjenks.com/docs/freegames/api.html#freegames.floor), [vector](http://www.grantjenks.com/docs/freegames/api.html#freegames.vector) form freegames module. _State_ variable will display Score of game. _path_ and _writer_ variable help us to build maze using turtle library. _aim_ and _pacman_ variable will set a starting position and direction for Pac-Man. _ghosts_ variable will set direction and position for 4 ghosts.
+.__state__ variable will display Score of game which start on zero.__aim__ sets the movement direction of Pacman with (5,0).By default we are moving the Pacman at speed of 5 toward positive x-axis. We are also creating a couple of Turtles which we’ll use later:__path__ for drawing the game world and __writer__ for writing the score.
 
 ## Draw the Maze
-Lets desgine the maze layout with an array called _tiles_ that contains our maze. 
-In the array, a 0 represents a wall, and a 1 represents a path where we will add a dot for pac-man to eat.
+Lets desgine the maze layout with an list called _tiles_ that contains our maze. In the array, a 0 represents a black wall, and a 1 represents a collectable dot or floor space. Our game world is 20X20, so it may be easier for future hacking the Python list by creating a new line every 20th value.
 ```python3
 tiles = [
-  0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
     0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0,
     0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0,
     0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0,
@@ -53,11 +56,10 @@ tiles = [
 ]
 ```
 
-
-
-## square
+## Creating the Walls
+Now it's time to put turtles to work. We will make a function __brick__ to draw squares,which will add up to create walls. 
 ```python3
-def square(x, y):
+def brick(x, y):
     "Draw square using path at (x, y)."
     path.up()
     path.goto(x, y)
@@ -71,8 +73,8 @@ def square(x, y):
     path.end_fill()
 ```
     
-## offset
-
+## Follow the Rules!
+Every one should follow the rules.So our Pacman also need to follow basic physics rules. We'll need a function __offset__ for collision detection and __valid__ to ensure our Pacman doesn't wall through the walls and out in real world :)
 ```python3
 def offset(point):
     "Return offset of point in tiles."
@@ -99,8 +101,9 @@ def valid(point):
     return point.x % 20 == 0 or point.y % 20 == 0
 ```
 
-Now create a function called _world_. 
-Remember to be very careful about the indentation of each line - for example, make sure the path.update() is lined up exactly under the for.
+## Building the Game World
+
+__world__ function will use to build game world. Of course you can choose your own colours, but to start with we’re using the traditional black and blue environment of the 1980 version of Pac-man. That final colour (path.dot) is assigned to our dots on the path. You’ll notice we’re taking advantage of the brick function we set up previously.. Remember to be very careful about the indentation of each line - for example, make sure the path.up() is lined up exactly under the if syntax.
 ```python3
 def world():
     Screen().bgcolor('black')
@@ -112,7 +115,7 @@ def world():
         if tile > 0:
             x = (index % 20) * 20 - 200
             y = 180 - (index // 20) * 20
-            square(x, y)
+            brick(x, y)
 
             if tile == 1:
                 path.up()
@@ -124,7 +127,8 @@ def world():
 This function sets the background of the screen to black, then uses the path turtle to draw a 20 pixel blue square for every tile with a value greater than zero. 
 If a tile value equals 1, then we draw a white dot in the middle of the square.
 
-## Move method
+## Moving in the Game World
+.Our one major function, move, will be used to move both our Pac-man and our ghosts around the game
 Then create a new function called move().
 ```python3
 def move():
@@ -147,7 +151,7 @@ We need to move Pac-Man on every screen update. Change the move() and add follow
         state['score'] += 1
         x = (index % 20) * 20 - 200
         y = 180 - (index // 20) * 20
-        square(x, y)
+        wall(x, y)
 
     up()
     goto(pacman.x + 10, pacman.y + 10)
