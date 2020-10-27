@@ -1,6 +1,13 @@
+---
+name: 'Pacman Game'
+description: 'Simple Pacman game using python'
+author: '@YashKalbande'
+img: 'https://cloud-k9b5z9yni.vercel.app/1pac-man.png'
+---
+
 Pac-man is one of the most famous video game in the world. Pac-man is a yellow, disk-shaped, mainly feature-less character, who roams around a 2D environment collecting dots. The player has to collect all the dots in the room without being touched by any of the four enemy characters in the form of ghosts. We will create a Pac-Man game, where the user moves around a maze eating all the dots while being pursued by four ghosts. We will be using the Freegame library to build this game.
 
-![](https://github.com/YashKalbande/FCR/blob/master/Pac%20man.gif)
+![pacman gif](https://cloud-k9b5z9yni.vercel.app/0pacman.gif)
 
 ## Setup
 Begin a new Python file using your favorite text editor or go on [repl.it/languages/python3](https://www.repl.it/languages/python3) to start a new coding environment of Python3 to quick start our workshop.
@@ -56,7 +63,7 @@ tiles = [
     
 ]
 ```
-
+![maze](https://cloud-k9b5z9yni.vercel.app/2maze.png)
 ## Creating the Walls
 Now it's time to put turtles to work. We will make a function __brick__ to draw squares, which will add up to create walls. 
 ```python3
