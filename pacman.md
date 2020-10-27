@@ -1,5 +1,5 @@
 In this workshop, we will be creating a Pac-Man maze game, where the user moves around a maze eating all the dots while being pursued by four ghosts. We will be using the Freegame library to build this game. 
-![](Pac man.gif)
+![](FCR/Pac man.gif)
 ## Setup
 Begin a new Python file using your favorite text editor or go on [repl.it/languages/python3](https://www.repl.it/languages/python3) to start a new coding environment of Python 3 to quick start our workshop.
 
