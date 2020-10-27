@@ -218,7 +218,7 @@ You can design end numbers of levels for Pac-man by doing changes in the `tiles`
 Here are some examples to give you some ideas:
 
 - [Easy Level](https://repl.it/@YashKalbande/Easy-Level#main.py)
-- [Medium Level]
+- [Medium Level](https://repl.it/@YashKalbande/Medium-Level#main.py)
 - [Hard Level}
 
 
