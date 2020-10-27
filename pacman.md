@@ -74,7 +74,7 @@ def brick(x, y):
 ```
     
 ## Follow the Rules!
-Every one should follow the rules.So our Pacman also need to follow basic physics rules. We'll need a function __offset__ for collision detection and __valid__ to ensure our Pacman doesn't wall through the walls and out in real world :)
+Every one should follow the rules.So our Pacman also need to follow basic physics rules. We'll need a function __offset__ for collision detection.
 ```python3
 def offset(point):
     "Return offset of point in tiles."
@@ -83,7 +83,7 @@ def offset(point):
     index = int(x + y * 20)
     return index
 ```
-
+__valid__ function will ensure our Pacman doesn't wall through the walls and out in real world :)
 
 ```python3
 def valid(point):
@@ -128,19 +128,14 @@ This function sets the background of the screen to black, then uses the path tur
 If a tile value equals 1, then we draw a white dot in the middle of the square.
 
 ## Moving in the Game World
-.Our one major function, move, will be used to move both our Pac-man and our ghosts around the game
+Our one major function, __move__, will be used to move both our Pac-man and our ghosts around the game
 Then create a new function called move().
 ```python3
 def move():
     "Move pacman and all ghosts."
     writer.undo()
     writer.write(state['score'])
-    clear()
-```
-
-We need to move Pac-Man on every screen update. Change the move() and add following code:
-    
-```python3
+    clear()    
     if valid(pacman + aim):
         pacman.move(aim)
 
