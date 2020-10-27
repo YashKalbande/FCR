@@ -132,7 +132,6 @@ Our one major function, __move__, will be used to move both our Pac-man and our 
 Then create a new function called move().
 ```python3
 def move():
-    "Move pacman and all ghosts."
     writer.undo()
     writer.write(state['score'])
     clear()    
@@ -146,7 +145,7 @@ def move():
         state['score'] += 1
         x = (index % 20) * 20 - 200
         y = 180 - (index // 20) * 20
-        wall(x, y)
+        brick(x, y)
 
     up()
     goto(pacman.x + 10, pacman.y + 10)
@@ -177,9 +176,10 @@ def move():
             return
 
 ```
+In this function we’re drawing the scores first, then we’re checking if a movement is valid before allowing it. The second if statement is what controls the eating of dots. For further hacking if you wanted to take things a step further and introduce an animation, sound effect or other notification we would introduce it after square(x,y) . Try adding `print(“PAC-MAN”)` as an example.
 
-##
-We need to create a new function to change the position of Pac-Man when we press a keys like up, down, left, right.
+## Giving Direction to Pacman
+Movement is all well and good, but we’ll need to be able to change the direction of our Pac-man namely as up, down, right, left. We’ll start be seeing if that direction is valid, thanks to our previous function, then we’ll go ahead and switch the x and y accordingly.
 ```python3
 def change(x, y):
     "Change pacman aim if valid."
@@ -188,8 +188,10 @@ def change(x, y):
         aim.y = y
 ```
 
-## abc
-This will cause the program to listen for arrow keypresses, and update Pac-Man’s direction.
+## The final step
+
+And finally, we can get our game going. We’ll need to set a resolution, hide the Turtles, write the score, listen for keyboard presses (we’re using lambda for this) and update Pac-Man’s direction, monitor the up, down, left and right keys for our aim changes. We’ll then draw the world, start the move function and we’re done!
+
 ```python3
 setup(420, 420, 370, 0)
 hideturtle()
@@ -206,4 +208,16 @@ world()
 move()
 done()
 ```
+
+## Hacking
+
+Our version of Pac-man is pretty basic, utilising 2D vector graphics and Python’s turtle graphics to draw shapes and dots on our screen. This art style is very much in-line with the look and feel of the original incarnation of the game in the 1980. If you want to take game a step further you could introduce graphical sprites, add more detials to Pac-man or ghosts like eyes,etc.
+You can desgine end numbers of levels for Pac-man by doing changes in `tiles` variable. Different colour schemes, size,number of ghost,etc.
+
+Here are some examples to give you some ideas:
+
+- [Easy Level]
+- [Medium Level]
+- [Hard Level}
+
 
