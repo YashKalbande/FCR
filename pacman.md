@@ -1,15 +1,15 @@
-In this workshop, we will be creating a Pac-Man maze game, where the user moves around a maze eating all the dots, while being pursued by four ghosts. We will be useing Freegame library to build this game. 
+In this workshop, we will be creating a Pac-Man maze game, where the user moves around a maze eating all the dots while being pursued by four ghosts. We will be using the Freegame library to build this game. 
 
 ## Setup
-Start a new Python file using your favourite text editor or go on [repl.it/languages/python3](https://www.repl.it/languages/python3) to start new coding environment of Python 3 to quick start our workshop.
+Begin a new Python file using your favorite text editor or go on [repl.it/languages/python3](https://www.repl.it/languages/python3) to start a new coding environment of Python 3 to quick start our workshop.
 
-Edit your new `main.py` with a new modular imports:
+Edit your new `main.py` with new modular imports:
 ```python3
 from random import choice
 from turtle import *
 from freegames import floor, vector
 ```
-The above code says, import choice function form random module. Import every functions form turtle module. [floor](http://www.grantjenks.com/docs/freegames/api.html#freegames.floor), [vector](http://www.grantjenks.com/docs/freegames/api.html#freegames.vector) form freegames module.
+The above code says import choice function from random module. Import every function from the turtle module. [floor](http://www.grantjenks.com/docs/freegames/api.html#freegames.floor), [vector](http://www.grantjenks.com/docs/freegames/api.html#freegames.vector) form freegames module.
 
 Next, we’ll want to declare and initialise all of our global variables:
 ```
@@ -25,7 +25,7 @@ ghosts = [
     [vector(100, -160), vector(-5, 0)],
 ]
 ```
-__state__ variable will display Score of game which start on zero.__aim__ sets the movement direction of Pacman with (5,0).By default we are moving the Pacman at speed of 5 toward positive x-axis. We are also creating a couple of Turtles which we’ll use later:__path__ for drawing the game world and __writer__ for writing the score.
+__state__ variable will display the score of the game which starts on zero.__aim__ sets the movement direction of Pacman with (5,0). By default, we are moving the Pacman at speed of 5 toward the positive x-axis. We are also creating a couple of Turtles which we’ll use later:__path__ for drawing the game world and __writer__ for writing the score.
 
 ## Draw the Maze
 Lets desgine the maze layout with an list called _tiles_ that contains our maze. In the array, a 0 represents a black wall, and a 1 represents a collectable dot or floor space. Our game world is 20X20, so it may be easier for future hacking the Python list by creating a new line every 20th value.
@@ -56,10 +56,9 @@ tiles = [
 ```
 
 ## Creating the Walls
-Now it's time to put turtles to work. We will make a function __brick__ to draw squares,which will add up to create walls. 
+Now it's time to put turtles to work. We will make a function __brick__ to draw squares, which will add up to create walls. 
 ```python3
 def brick(x, y):
-    "Draw square using path at (x, y)."
     path.up()
     path.goto(x, y)
     path.down()
@@ -73,7 +72,7 @@ def brick(x, y):
 ```
     
 ## Follow the Rules!
-Every one should follow the rules.So our Pacman also need to follow basic physics rules. We'll need a function __offset__ for collision detection.
+Everyone should follow the rules. So our Pacman also needs to follow basic physics rules. We'll need a function __offset__ for collision detection.
 ```python3
 def offset(point):
     "Return offset of point in tiles."
@@ -82,11 +81,11 @@ def offset(point):
     index = int(x + y * 20)
     return index
 ```
-__valid__ function will ensure our Pacman doesn't wall through the walls and out in real world :)
+__valid__ function will ensure our Pacman doesn't wall through the walls and out in the real world :)
 
 ```python3
 def valid(point):
-    "Return True if point is valid in tiles."
+    "Return True if a point is valid in tiles."
     index = offset(point)
 
     if tiles[index] == 0:
@@ -102,7 +101,7 @@ def valid(point):
 
 ## Building the Game World
 
-__world__ function will use to build game world. Of course you can choose your own colours, but to start with we’re using the traditional black and blue environment of the 1980 version of Pac-man. That final colour (path.dot) is assigned to our dots on the path. You’ll notice we’re taking advantage of the brick function we set up previously.. Remember to be very careful about the indentation of each line - for example, make sure the path.up() is lined up exactly under the if syntax.
+__world__ function will use to build the game world. Of course, you can choose your colors, but to start with we’re using the traditional black and blue environment of the 1980 version of Pac-man. That final color (path.dot) is assigned to our dots on the path. You’ll notice we’re taking advantage of the brick function we set up previously. Remember to be very careful about the indentation of each line - for example, make sure the path.up() is lined up exactly under the if syntax.
 ```python3
 def world():
     Screen().bgcolor('black')
@@ -124,7 +123,7 @@ def world():
     update()
 ```
 This function sets the background of the screen to black, then uses the path turtle to draw a 20 pixel blue square for every tile with a value greater than zero. 
-If a tile value equals 1, then we draw a white dot in the middle of the square.
+If a tile value equals 1, then we draw a white dot in the middle of the squares created by our brick function.
 
 ## Moving in the Game World
 Our one major function, __move__, will be used to move both our Pac-man and our ghosts around the game
@@ -176,13 +175,13 @@ def move():
     ontimer(move, 100)
 
 ```
-In this function we’re drawing the scores first, then we’re checking if a movement is valid before allowing it. The second if statement is what controls the eating of dots. For further hacking if you wanted to take things a step further and introduce an animation, sound effect or other notification we would introduce it after brick(x,y) . Try adding `print(“PAC-MAN”)` as an example.
+In this function we’re drawing the scores first, then we’re checking if a movement is valid before allowing it. The second `if` statement is what controls the eating of dots. For further hacking, if you wanted to take things a step further and introduce an animation, sound effect, or other notification we would introduce it after brick(x,y). Try adding `print(“PAC-MAN”)` as an example.
 
 ## Giving Direction to Pacman
-Movement is all well and good, but we’ll need to be able to change the direction of our Pac-man namely as up, down, right, left. We’ll start be seeing if that direction is valid, thanks to our previous function, then we’ll go ahead and switch the x and y accordingly.
+Movement is all well and good, but we’ll need to be able to change the direction of our Pac-man namely as up, down, right, left. We’ll start by seeing if that direction is valid, thanks to our previous function, then we’ll go ahead and switch the x and y accordingly.
 ```python3
 def change(x, y):
-    "Change pacman aim if valid."
+    "Change Pacman aim if valid."
     if valid(pacman + vector(x, y)):
         aim.x = x
         aim.y = y
@@ -211,8 +210,8 @@ done()
 
 ## Hacking
 
-Our version of Pac-man is pretty basic, utilising 2D vector graphics and Python’s turtle graphics to draw shapes and dots on our screen. This art style is very much in-line with the look and feel of the original incarnation of the game in the 1980. If you want to take game a step further you could introduce graphical sprites, add more detials to Pac-man or ghosts like eyes,etc.
-You can desgine end numbers of levels for Pac-man by doing changes in `tiles` variable. Different colour schemes, size,number of ghost,etc.
+Our version of Pac-man is pretty basic, utilizing 2D vector graphics and Python’s turtle graphics to draw shapes and dots on our screen. This art style is very much in-line with the look and feel of the original incarnation of the game in the 1980s. If you want to take the game a step further you could introduce graphical sprites, add more details to Pac-man or ghosts like eyes, etc.
+You can design end numbers of levels for Pac-man by doing changes in the `tiles` variable. Different color schemes, size, number of ghosts, etc.
 
 Here are some examples to give you some ideas:
 
