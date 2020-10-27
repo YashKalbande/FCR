@@ -1,9 +1,9 @@
-In this workshop, we will be creating a Pac-Man maze game, where the user moves around a maze eating all the dots while being pursued by four ghosts. We will be using the Freegame library to build this game. 
+Pac-man is one of the most famous video game in the world. Pac-man is a yellow, disk-shaped, mainly feature-less character, who roams around a 2D environment collecting dots. The player has to collect all the dots in the room without being touched by any of the four enemy characters in the form of ghosts. We will create a Pac-Man game, where the user moves around a maze eating all the dots while being pursued by four ghosts. We will be using the Freegame library to build this game.
 
 ![](https://github.com/YashKalbande/FCR/blob/master/Pac%20man.gif)
 
 ## Setup
-Begin a new Python file using your favorite text editor or go on [repl.it/languages/python3](https://www.repl.it/languages/python3) to start a new coding environment of Python 3 to quick start our workshop.
+Begin a new Python file using your favorite text editor or go on [repl.it/languages/python3](https://www.repl.it/languages/python3) to start a new coding environment of Python3 to quick start our workshop.
 
 Edit your new `main.py` with new modular imports:
 ```python3
@@ -27,10 +27,10 @@ ghosts = [
     [vector(100, -160), vector(-5, 0)],
 ]
 ```
-__state__ variable will display the score of the game which starts on zero.__aim__ sets the movement direction of Pacman with (5,0). By default, we are moving the Pacman at speed of 5 toward the positive x-axis. We are also creating a couple of Turtles which we’ll use later:__path__ for drawing the game world and __writer__ for writing the score.
+__state__ variable will display the score of the game which starts on `zero`.__aim__ sets the movement direction of Pacman with (5,0). By default, we are moving the Pacman at speed of `5` toward the positive x-axis. We are also creating a couple of Turtles which we’ll use later:__path__ for drawing the game world and __writer__ for writing the score.
 
 ## Draw the Maze
-Lets desgine the maze layout with an list called _tiles_ that contains our maze. In the array, a 0 represents a black wall, and a 1 represents a collectable dot or floor space. Our game world is 20X20, so it may be easier for future hacking the Python list by creating a new line every 20th value.
+Lets desgine the maze layout with an list called _tiles_ that contains our maze. In the array, a `0` represents a black wall, and a `1` represents a collectable dot or floor space. Our game world is `20X20`, so it may be easier for future hacking the Python list by creating a new line every 20th value.
 ```python3
 tiles = [
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
@@ -103,7 +103,7 @@ def valid(point):
 
 ## Building the Game World
 
-__world__ function will use to build the game world. Of course, you can choose your colors, but to start with we’re using the traditional black and blue environment of the 1980 version of Pac-man. That final color (path.dot) is assigned to our dots on the path. You’ll notice we’re taking advantage of the brick function we set up previously. Remember to be very careful about the indentation of each line - for example, make sure the path.up() is lined up exactly under the if syntax.
+__world__ function will use to build the game world. Of course, you can choose your colors, but to start with we’re using the traditional black and blue environment of the 1980 version of Pac-man. That final color (path.dot) is assigned to our dots on the path. You’ll notice we’re taking advantage of the brick function we set up previously. Remember to be very careful about the indentation of each line - for example, make sure the `path.up()` is lined up exactly under the `if` syntax.
 ```python3
 def world():
     Screen().bgcolor('black')
@@ -189,7 +189,7 @@ def change(x, y):
         aim.y = y
 ```
 
-## The final step
+## The Final Step
 
 And finally, we can get our game going. We’ll need to set a resolution, hide the Turtles, write the score, listen for keyboard presses (we’re using lambda for this) and update Pac-Man’s direction, monitor the up, down, left and right keys for our aim changes. We’ll then draw the world, start the move function and we’re done!
 
