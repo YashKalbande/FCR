@@ -1,10 +1,9 @@
-In this workshop, we will be creating a Pac-Man maze game, where the user moves around a maze eating all the dots, while being pursued by four ghosts. 
-We will use Freegame library. 
+In this workshop, we will be creating a Pac-Man maze game, where the user moves around a maze eating all the dots, while being pursued by four ghosts. We will be useing Freegame library to build this game. 
 
 ## Setup
-Start a new Python file. Using your favourite text editor or go on [repl.it/languages/python3](https://www.repl.it/languages/python3) to start new coding environment of Python 3 to quick start our workshop.
+Start a new Python file using your favourite text editor or go on [repl.it/languages/python3](https://www.repl.it/languages/python3) to start new coding environment of Python 3 to quick start our workshop.
 
-Start your new `main.py` with a new modular imports:
+Edit your new `main.py` with a new modular imports:
 ```python3
 from random import choice
 from turtle import *
@@ -26,7 +25,7 @@ ghosts = [
     [vector(100, -160), vector(-5, 0)],
 ]
 ```
-.__state__ variable will display Score of game which start on zero.__aim__ sets the movement direction of Pacman with (5,0).By default we are moving the Pacman at speed of 5 toward positive x-axis. We are also creating a couple of Turtles which we’ll use later:__path__ for drawing the game world and __writer__ for writing the score.
+__state__ variable will display Score of game which start on zero.__aim__ sets the movement direction of Pacman with (5,0).By default we are moving the Pacman at speed of 5 toward positive x-axis. We are also creating a couple of Turtles which we’ll use later:__path__ for drawing the game world and __writer__ for writing the score.
 
 ## Draw the Maze
 Lets desgine the maze layout with an list called _tiles_ that contains our maze. In the array, a 0 represents a black wall, and a 1 represents a collectable dot or floor space. Our game world is 20X20, so it may be easier for future hacking the Python list by creating a new line every 20th value.
@@ -174,9 +173,10 @@ def move():
     for point, course in ghosts:
         if abs(pacman - point) < 20:
             return
+    ontimer(move, 100)
 
 ```
-In this function we’re drawing the scores first, then we’re checking if a movement is valid before allowing it. The second if statement is what controls the eating of dots. For further hacking if you wanted to take things a step further and introduce an animation, sound effect or other notification we would introduce it after square(x,y) . Try adding `print(“PAC-MAN”)` as an example.
+In this function we’re drawing the scores first, then we’re checking if a movement is valid before allowing it. The second if statement is what controls the eating of dots. For further hacking if you wanted to take things a step further and introduce an animation, sound effect or other notification we would introduce it after brick(x,y) . Try adding `print(“PAC-MAN”)` as an example.
 
 ## Giving Direction to Pacman
 Movement is all well and good, but we’ll need to be able to change the direction of our Pac-man namely as up, down, right, left. We’ll start be seeing if that direction is valid, thanks to our previous function, then we’ll go ahead and switch the x and y accordingly.
